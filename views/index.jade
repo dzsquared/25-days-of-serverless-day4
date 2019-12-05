@@ -1,0 +1,35 @@
+extends layout
+block content
+    h1 #{title}
+    br
+
+    form(action="/completetask" method="post")
+        table.table.table-striped.table-bordered
+            tr
+                td Name
+                td Category
+                td Remove
+            if (typeof tasks === "undefined")
+                tr
+                    td
+            else
+                each task in tasks
+                    tr
+                        td #{task.name}
+                        td #{task.category}
+                        td
+                            if(task.completed) 
+                                input(type="checkbox" name="#{task.id}" value="#{!task.completed}", checked=task.completed)
+                            else
+                                input(type="checkbox" name="#{task.id}" value="#{!task.completed}", checked=task.completed)
+    div.container
+        button.btn.btn-warning(type="submit" style="float:right") Remove Checked
+    hr
+    form.well(action="/addtask" method="post")
+        div.form-group
+            label Potluck Item:
+            input.form-control(name="name" type="textbox")
+        div.form-group
+            label Category:
+            input.form-control(name="category" type="textbox")
+        button.btn.btn-success.btn-sm(type="submit") Add to Potluck
