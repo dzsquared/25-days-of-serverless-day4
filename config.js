@@ -1,8 +1,8 @@
 const config = {};
 
 config.host = process.env.HOST;
-config.authKey =
-    process.env.AUTH_KEY;
+config.authKey = process.env.AUTH_KEY;
+
 config.databaseId = "PotluckList";
 config.containerId = "Items";
 
